@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUV 7 ASIENTOS</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="/ownproject/api/css/estilos.css">
+</head>
+<body>
+<header>
+    <h1 th:text="${greeting}">Categoría de Vehículos</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#especifymoney">Especifica el Dinero</a></li>
+        <li><a href="#categoriaa">Categoría A</a></li>
+        <li><a href="#categoriab">Categoría B</a></li>
+        <li><a href="#categoriac">Categoría C</a></li>
+        <li><a href="#categoriad">Categoría D</a></li>
+    </ul>
+</nav>
+
+<div class="moneytype">
+    <div class="moneyty" id="especifymoney">
+        <h2>Dinero para comprar el carro</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Dinero Pepe</th>
+                <th>Dinero AFP</th>
+                <th>Dinero venta Sentra</th>
+                <th>Dinero total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="'S/ ' + ${countMoney.moneyDadBank}">Dinero Pepe</td>
+                <td th:text="'S/ ' + ${countMoney.moneyAfp}">Dinero AFP</td>
+                <td th:text="'S/ ' + ${countMoney.moneyCar}">Dinero venta Sentra</td>
+                <td th:text="'$ ' + ${countMoney.answer}">Dinero total</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Repite lo mismo para otras categorías si es necesario -->
+</div>
+
+<div class="categories">
+    <!-- Sección de Automóviles -->
+    <!-- Sección de vehículos listados dinámicamente -->
+    <div class="category">
+        <h2>Categoría A USADO / 3.5cc</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Precio</th>
+                <th>Dinero Faltante</th>
+                <th>Tracción</th>
+                <th>Kilometraje</th>
+                <th>Fecha de Publicación</th>
+                <th>Diás sin vender</th>
+                <th>Estatus</th>
+                <th>Link</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vehicle : ${vehicles}">
+                <td th:text="${vehicle.branDomain}"></td>
+                <td th:text="${vehicle.modelDomain}"></td>
+                <td th:text="${vehicle.yearDomain}"></td>
+                <td th:text="'$ ' + ${vehicle.priceDomain}">Precio</td>
+                <td th:text="'$ ' + ${vehicle.moneyMissingDomain}">Precio Faltante</td>
+                <td th:text="${vehicle.tractionDomain}"></td>
+                <td th:text="${vehicle.kilometerDomain} + ' km'">Kilometraje</td>
+                <td th:text="${vehicle.datePublicationDomain}"></td>
+                <td th:text="${vehicle.daysWhitoutSellDomain}"></td>
+                <td th:text="${vehicle.statusDomain}"></td>
+                <td><a th:href="${vehicle.linkDomain}" th:text="'Ver'"></a></td>
+                <td>
+                    <form th:action="@{/vehicle/delete}" method="post">
+                        <input type="hidden" th:value="${vehicle.productIdDomain}" name="id"/>
+                        <input type="hidden" name="_method" value="delete"/> <!-- Para indicar que es un DELETE -->
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/vehicle/form}">Agregar Nuevo Vehículo</a>
+    </div>
+
+    <!-- Sección de Camionetas -->
+    <div class="category" id="categoriab">
+        <h2>Categoría B NUEVA / 2.5 cc</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Precio</th>
+                <th>Kilometraje</th>
+                <th>Transmisión</th>
+                <th>Tracción</th>
+                <th>Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Hyundai</td>
+                <td>Santafe desfasado</td>
+                <td>2024</td>
+                <td>$30,990</td>
+                <td>00,000 km</td>
+                <td>Automática</td>
+                <td>4X2</td>
+                <td><a href="https://hyundai.pe/modelos/new-santafe/destacado/">Ver</a></td>
+            </tr>
+            <tr>
+                <td>Kia</td>
+                <td>Sorento Actual</td>
+                <td>2024</td>
+                <td>$38,990</td>
+                <td>00,000 km</td>
+                <td>Automática</td>
+                <td>4X2</td>
+                <td><a href="https://www.kia.com/pe/promotions/month-campaigns/sorento.html">Ver</a></td>
+            </tr>
+            <!-- Agrega más vehículos aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <section id="categoriac">
+        <h2>Categoría C NUEVAS / 2.0 cc</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Precio</th>
+                <th>Kilometraje</th>
+                <th>Transmisión</th>
+                <th>Tracción</th>
+                <th>Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Hyundai</td>
+                <td>Creta Grand</td>
+                <td>2024</td>
+                <td>$23,990</td>
+                <td>00,000 km</td>
+                <td>Automática</td>
+                <td>4X2</td>
+                <td><a href="https://hyundai.pe/sobre-su-vehiculo/cotizar/cotizar-creta-grand/">Ver</a></td>
+            </tr>
+            <!-- Agrega más vehículos aquí -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="categoriad">
+        <h2>Categoría D Nueva / 1.5 cc</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Precio</th>
+                <th>Kilometraje</th>
+                <th>Transmisión</th>
+                <th>Tracción</th>
+                <th>Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Chevrolet</td>
+                <td>Captiva</td>
+                <td>2024</td>
+                <td>$21,990</td>
+                <td>00,000 km</td>
+                <td>Mecánica</td>
+                <td>4X2</td>
+                <td><a href="https://www.chevrolet.com.pe/camionetas/captiva-camioneta-suv">Ver</a></td>
+            </tr>
+            <tr>
+                <td>Toyota</td>
+                <td>Avanza</td>
+                <td>2024</td>
+                <td>$19,370</td>
+                <td>00,000 km</td>
+                <td>Mecánica</td>
+                <td>4X2</td>
+                <td><a href="https://www.toyotaperu.com.pe/listado-modelos-toyota/camioneta-toyota-avanza">Ver</a></td>
+            </tr>
+            <tr>
+                <td>Misubishi</td>
+                <td>XL7</td>
+                <td>2024</td>
+                <td>$23,590</td>
+                <td>00,000 km</td>
+                <td>Mecánica</td>
+                <td>4X2</td>
+                <td><a href="https://www.derco.com.pe/catalogo-derco/autos?brands=suzuki&models=xl7">Ver</a></td>
+            </tr>
+            <tr>
+                <td>Suzuki</td>
+                <td>Ertiga</td>
+                <td>2024</td>
+                <td>$18,990</td>
+                <td>00,000 km</td>
+                <td>Mecánica</td>
+                <td>4X2</td>
+                <td><a href="https://www.suzuki.com.pe/vehiculo/ertiga/">Ver</a></td>
+            </tr>
+            <!-- Agrega más vehículos aquí -->
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Categorización de vehículos para 7 pasajeros. Todos los derechos reservados de Willy León.</p>
+</footer>
+</body>
+</html>

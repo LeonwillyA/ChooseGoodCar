@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Lis</title>
+</head>
+<body>
+<h1>List of Vehicles</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Año</th>
+        <th>Precio</th>
+        <th>Transmisión</th>
+        <th>Tracción</th>
+        <th>Placa</th>
+        <th>Kilometraje</th>
+        <th>Estatus</th>
+        <th>Link</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vehicle : ${vehicles}">
+        <td th:text="${vehicle.branDomain}"></td>
+        <td th:text="${vehicle.modelDomain}"></td>
+        <td th:text="${vehicle.yearDomain}"></td>
+        <td th:text="${vehicle.priceDomain}"></td>
+        <td th:text="${vehicle.transmissionDomain}"></td>
+        <td th:text="${vehicle.tractionDomain}"></td>
+        <td th:text="${vehicle.plateDomain}"></td>
+        <td th:text="${vehicle.kilometerDomain}"></td>
+        <td th:text="${vehicle.statusDomain}"></td>
+        <td th:text="${vehicle.linkDomain}"></td>
+        <td>
+            <form th:action="@{/vehicle/delete}" method="post">
+                <input type="hidden" th:value="${vehicle.productIdDomain}" name="id"/>
+                <input type="hidden" name="_method" value="delete"/> <!-- Para indicar que es un DELETE -->
+                <button type="submit">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/vehicle/form}">Agregar Nuevo Vehículo</a>
+</body>
+</html>
