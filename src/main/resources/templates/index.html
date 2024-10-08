@@ -24,27 +24,29 @@
 
 <div class="moneytype">
     <div class="moneyty" id="especifymoney">
-        <h2>Dinero para comprar el carro</h2>
+        <h2>Dinero para comprar la MAMA-VAN</h2>
         <table>
             <thead>
             <tr>
-                <th>Dinero Pepe</th>
+                <th>Dinero Pepe BANK</th>
                 <th>Dinero AFP</th>
                 <th>Dinero venta Sentra</th>
-                <th>Dinero total</th>
+                <th>Dinero Pepe Cash</th>
+                <th>Monto total dolares</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td th:text="'S/ ' + ${countMoney.moneyDadBank}">Dinero Pepe</td>
-                <td th:text="'S/ ' + ${countMoney.moneyAfp}">Dinero AFP</td>
+                <td th:text="'S/ ' + ${countMoney.moneyPepeBank}">Dinero Pepe BANK</td>
+                <td th:text="'S/ ' + ${countMoney.moneyAfp}">Dinero AFP </td>
                 <td th:text="'S/ ' + ${countMoney.moneyCar}">Dinero venta Sentra</td>
+                <td th:text="'S/ ' + ${countMoney.moneyPepeCash}">Dinero Pepe Cash</td>
                 <td th:text="'$ ' + ${countMoney.answer}">Dinero total</td>
             </tr>
             </tbody>
         </table>
     </div>
-    <!-- Repite lo mismo para otras categorías si es necesario -->
+
 </div>
 
 <div class="categories">

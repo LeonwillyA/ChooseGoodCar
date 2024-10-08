@@ -6,38 +6,36 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class CountMoney {
-    private BigDecimal moneyDadBank;
-    private BigDecimal moneyAfp;
-    private BigDecimal moneyCar;
+    private final BigDecimal moneyPepeBank = BigDecimal.valueOf(31000);
+    private final BigDecimal moneyAfp = BigDecimal.valueOf(10000);
+    private final BigDecimal moneyCar = BigDecimal.valueOf(15000);
+    private final BigDecimal moneyPepeCash = BigDecimal.valueOf(20000);
+    private final BigDecimal exchangeRate = BigDecimal.valueOf(3.758);
     private BigDecimal answer;
 
-    public BigDecimal suuma (BigDecimal moneyDadBank, BigDecimal moneyAfp, BigDecimal moneyCar){
-        answer = (moneyAfp.add(moneyDadBank).add(moneyCar)).divide(BigDecimal.valueOf(3.75), RoundingMode.HALF_UP);
+    public BigDecimal suuma (){
+        answer = (moneyAfp.add(moneyPepeBank).add(moneyCar).add(moneyPepeCash)).divide(exchangeRate, RoundingMode.HALF_UP);
         return answer;
     }
 
-    public BigDecimal getMoneyDadBank() {
-        return moneyDadBank;
+    public BigDecimal getMoneyPepeCash() {
+        return moneyPepeCash;
     }
 
-    public void setMoneyDadBank(BigDecimal moneyDadBank) {
-        this.moneyDadBank = moneyDadBank;
+    public BigDecimal getExchangeRate() {
+        return exchangeRate;
+    }
+
+    public BigDecimal getMoneyPepeBank() {
+        return moneyPepeBank;
     }
 
     public BigDecimal getMoneyAfp() {
         return moneyAfp;
     }
 
-    public void setMoneyAfp(BigDecimal moneyAfp) {
-        this.moneyAfp = moneyAfp;
-    }
-
     public BigDecimal getMoneyCar() {
         return moneyCar;
-    }
-
-    public void setMoneyCar(BigDecimal moneyCar) {
-        this.moneyCar = moneyCar;
     }
 
     public BigDecimal getAnswer() {

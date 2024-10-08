@@ -15,7 +15,7 @@ public class DaysWhitoutSell {
         }
 
         // Obtener la fecha de ingreso del vehículo
-        LocalDate entryDate = vehicle.getDatePublicationDomain(); // Método para obtener la fecha de ingreso
+        LocalDate entryDate = vehicle.getDatePublicationDomain(); // Metodo para obtener la fecha de ingreso
         LocalDate currentDate = LocalDate.now(); // Fecha actual
 
         // Calcular los días entre la fecha de ingreso y la fecha actual

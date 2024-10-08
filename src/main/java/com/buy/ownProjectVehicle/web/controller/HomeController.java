@@ -44,19 +44,14 @@ public class HomeController {
         }
 
         model.addAttribute("vehicles", vehicles);
+        CountMoney countMoney = new CountMoney();
 
+
+        BigDecimal dolares = countMoney.suuma();
         // Calcular el nuevo precio restando 'missingValue'
-        BigDecimal missingValue = new BigDecimal("16267");
+        BigDecimal missingValue = new BigDecimal(String.valueOf(dolares));
         List<VehicleCrossoverDomain> updatedVehicles = differencer.restPrice(vehicles, missingValue);
         model.addAttribute("vehicles", updatedVehicles);
-        CountMoney countMoney = new CountMoney();
-        countMoney.setMoneyAfp(new BigDecimal("10000"));
-        countMoney.setMoneyCar(new BigDecimal("20000"));
-        countMoney.setMoneyDadBank(new BigDecimal("31000"));
-
-        countMoney.suuma(BigDecimal.valueOf(31000),
-                BigDecimal.valueOf(10000),
-                BigDecimal.valueOf(20000));
 
 
 
